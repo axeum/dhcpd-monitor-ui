@@ -1,3 +1,5 @@
+#!/bin/bash
+
 DHCPDS=\
 http://10.25.55.1/v1/api/state,\
 http://10.25.57.1/v1/api/state,\
@@ -49,6 +51,6 @@ http://10.25.163.1/v1/api/state,\
 http://10.25.164.1/v1/api/state,\
 http://10.25.165.1/v1/api/state,\
 http://10.25.166.1/v1/api/state,\
-http://10.25.167.1/v1/api/state
-
+http://10.25.167.1/v1/api/state \
 go run main.go
+
