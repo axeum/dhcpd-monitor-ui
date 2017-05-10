@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DHCPD Monitor</title>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/emojione/2.2.6/assets/css/emojione.min.css" rel="stylesheet">
+	<link href="/style.css" rel="stylesheet">
+</head>
+<body>
+	<header>
+		<nav>
+			<div class="nav-wrapper">
+				<a class="brand-logo right" href="/">DHCPD Monitor</a>
+			</div>
+		</nav>
+	</header>
+	<main id="app">
+		<table id="dhcpd-table" class="tablesorter table table-striped">
+			<thead>
+				<tr>
+					<th>Server</th>
+					<th>Range</th>
+					<th>Defined</th>
+          <th>Used</th>
+          <th>Touched</th>
+          <th>Free</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr v-for="state in allState">
+					<template v-if="state.status == 'online'">
+						<td>{{ state.server }}</td>
+						<td>{{ state.subnets[2].range }}</td>
+						<td>{{ state.subnets[2].defined }}</td>
+						<td>{{ state.subnets[2].used }}</td>
+						<td>{{ state.subnets[2].touched }}</td>
+						<td>{{ state.subnets[2].free }}</td>
+					</template>
+					<template v-else>
+						<td>{{ state.server }}</td>
+						<td>Offline</td>
+					</template>
+				</tr>
+			</tbody>
+		</table>
+	</main>
+	<footer class="page-footer"></footer>
+	<script src="https://unpkg.com/vue@2.1.3/dist/vue.min.js">
+	</script>
+	<script src="https://cdn.jsdelivr.net/emojione/2.2.6/lib/js/emojione.min.js">
+	</script>
+	<script src="https://code.jquery.com/jquery-latest.js">
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js">
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js">
+	</script>
+	<script src="/app.js">
+	</script>
+</body>
+</html>
